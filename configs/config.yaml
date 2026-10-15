@@ -1,0 +1,54 @@
+# ==============================================================================
+# SpectroGuard-Audio Configuration Specification
+# ==============================================================================
+
+# Digital Signal Processing (DSP) & Acoustic Pipeline
+dsp:
+  sample_rate: 16000
+  target_duration_sec: 3.0
+  target_samples: 48000             # 16000 * 3.0
+  vad_top_db: 25                    # Silence threshold for Voice Activity Detection
+  target_rms_dbfs: -23.0            # Loudness normalization standard (ITU-R BS.1770)
+  n_fft: 1024
+  hop_length: 512
+  n_mels: 128                       # Frequency bands in Mel scale
+  f_min: 20                         # Human speech lower frequency cutoff
+  f_max: 8000                       # Nyquist limit for 16kHz audio
+  n_lfcc: 40                        # Linear Frequency Cepstral Coefficients
+
+# SpecAugment & Acoustic Data Augmentation
+augmentation:
+  enabled: true
+  freq_mask_param: 16               # Maximum frequency channels to mask
+  time_mask_param: 24               # Maximum time frames to mask
+  gaussian_noise_std: 0.005         # Additive microphone noise standard deviation
+  time_stretch_factors: [0.95, 1.05]
+
+# Neural Architecture Specifications
+models:
+  resnet:
+    in_channels: 1                  # Single-channel 2D Spectrogram
+    num_classes: 1
+    dropout_rate: 0.3
+  wav2vec:
+    pretrained_model: "facebook/wav2vec2-base"
+    freeze_feature_extractor: true  # Freeze initial 7-layer 1D CNN
+    hidden_dim: 128
+    dropout_rate: 0.3
+
+# Training Hyperparameters
+training:
+  batch_size: 16
+  num_workers: 2
+  learning_rate: 0.0001
+  weight_decay: 0.0001
+  epochs: 25
+  early_stopping_patience: 5
+  loss_type: "bce_with_label_smoothing" # Options: bce, bce_with_label_smoothing, focal
+  label_smoothing: 0.05
+  focal_gamma: 2.0
+
+# Evaluation & ASVspoof Benchmarking
+evaluation:
+  num_threshold_steps: 1000         # High-resolution sweep for EER crossing point
+  default_calibrated_threshold: 0.518
