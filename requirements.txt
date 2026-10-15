@@ -1,0 +1,29 @@
+# Deep Learning & Audio Neural Backbones
+torch>=2.2.0
+torchaudio>=2.2.0
+transformers>=4.38.0
+scikit-learn>=1.4.0
+
+# Digital Signal Processing (DSP) & Acoustic Features
+librosa>=0.10.1
+soundfile>=0.12.1
+scipy>=1.12.0
+numpy>=1.26.0
+
+# Synthetic Audio Generation (Free, No API Keys)
+edge-tts>=6.1.10
+
+# Web Serving & Data Validation
+fastapi>=0.110.0
+uvicorn[standard]>=0.28.0
+pydantic>=2.6.0
+python-multipart>=0.0.9
+pyyaml>=6.0.1
+
+# Evaluation, Plotting & Visualization
+matplotlib>=3.8.0
+
+# Testing & Quality Assurance
+pytest>=8.0.0
+pytest-asyncio>=0.23.0
+httpx>=0.27.0

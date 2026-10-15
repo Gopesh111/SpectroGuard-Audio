@@ -1,0 +1,72 @@
+# Byte-compiled / optimized / DLL files
+__pycache__/
+*.py[cod]
+*$py.class
+
+# C extensions
+*.so
+
+# Distribution / packaging
+.Python
+build/
+develop-eggs/
+dist/
+downloads/
+eggs/
+.eggs/
+lib/
+lib64/
+parts/
+sdist/
+var/
+wheels/
+*.egg-info/
+.installed.cfg
+*.egg
+
+# Virtual environments
+venv/
+env/
+ENV/
+.venv/
+
+# Environment variables & local secrets
+.env
+*.env.local
+
+# PyTorch Checkpoints & Large Model Weights
+checkpoints/*.pt
+checkpoints/*.pth
+checkpoints/*.bin
+*.onnx
+
+# Data & Audio datasets (preserve sample_audio metadata)
+data/raw/
+data/processed/
+*.wav
+*.mp3
+*.flac
+*.ogg
+!data/sample_audio/.gitkeep
+
+# Unit test & coverage reports
+.pytest_cache/
+.coverage
+htmlcov/
+coverage.xml
+
+# Matplotlib & Evaluation Outputs
+eval_output/
+*.png
+*.jpg
+*.svg
+
+# IDE & Editor files
+.vscode/
+.idea/
+*.swp
+*.swo
+
+# OS generated files
+.DS_Store
+Thumbs.db
